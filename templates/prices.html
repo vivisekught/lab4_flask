@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>{{ title }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Головна</a></li>
+            <li><a href="{{ url_for('offers') }}">Товари та послуги</a></li>
+            <li><a href="{{ url_for('prices') }}">Ціни</a></li>
+            <li><a href="{{ url_for('contact') }}">Зв'язатися з нами</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Ціни на автомобілі</h2>
+    <table class="price-table">
+        <thead>
+            <tr>
+                <th>Марка</th>
+                <th>Модель</th>
+                <th>Ціна</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.brand }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+<footer>
+    <p>Телефон: +380-123-7890</p>
+    <p>Адреса: вулиця Теодора Драйзера 3А, Київ, Україна</p>
+    <p>&copy; {{ year }} Car Shop. All rights reserved.</p>
+</footer>
+</body>
+</html>

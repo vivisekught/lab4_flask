@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>{{ title }}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Головна</a></li>
+            <li><a href="{{ url_for('offers') }}">Товари та послуги</a></li>
+            <li><a href="{{ url_for('prices') }}">Ціни</a></li>
+            <li><a href="{{ url_for('contact') }}">Зв'язатися з нами</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Ласкаво просимо до нашого автомагазину!</h2>
+    <p>Ми пропонуємо широкий вибір автомобілів і послуг для задоволення ваших потреб. Якщо ви шукаєте новий або вживаний автомобіль, або
+         потребуєте технічного обслуговування або ремонту, ми тут, щоб допомогти.</p>
+    <h3>Популярні пропозиції</h3>
+    {% for car in featured_cars %}
+        <div class="car">
+            <img src="{{ url_for('static', filename='images/' + car.image) }}" alt="{{ car.name }} image">
+            <h4>{{ car.name }}</h4>
+            <p>{{ car.description }}</p>
+            <p class="price">{{ car.price }}</p>
+        </div>
+    {% endfor %}
+</main>
+<footer>
+    <p>Телефон: +380-123-7890</p>
+    <p>Адреса: вулиця Теодора Драйзера 3А, Київ, Україна</p>
+    <p>&copy; {{ year }} Car Shop. All rights reserved.</p>
+</footer>
+</body>
+</html>
